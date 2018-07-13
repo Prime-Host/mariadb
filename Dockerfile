@@ -1,4 +1,4 @@
-ROM mariadb:latest
+FROM mariadb:latest
 MAINTAINER Kevin Nordloh <info@prime-host.de>
 
 RUN apt-get update && apt-get install -y openssh-server vim supervisor curl wget git unzip zsh
