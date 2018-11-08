@@ -7,10 +7,11 @@ RUN apt-get update && apt-get install -y openssh-server vim supervisor curl wget
 
 # SSH login fix. Otherwise user is kicked off after login
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd \
- && NOTVISIBLE "in users profile" \
  && echo "export VISIBLE=now" >> /etc/profile \
- && TZ=Europe/Berlin \
  && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+ENV NOTVISIBLE "in users profile"
+ENV TZ=Europe/Berlin
 
 # Install oh-my-zsh and configure for all users
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true \
