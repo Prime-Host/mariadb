@@ -1,5 +1,6 @@
 #!/bin/bash
-service ssh restart
+service ssh start
+service cron start
 
 # Create custom ssh_user with sudo privileges
 useradd -m -d /home/$PRIMEHOST_USER -G root -s /bin/zsh $PRIMEHOST_USER \
