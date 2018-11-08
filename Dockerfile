@@ -19,9 +19,9 @@ RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -
  && cp -r /root/.oh-my-zsh /etc/skel/ \
  && cp /root/.zshrc /etc/skel \
  && apt-get --purge autoremove -y \
- && ./my.cnf /etc/mysql/my.cnf \
  && crontab -l | { cat; echo "* * * * * /root/scripts/mysql-backup.sh"; } | crontab -
 
+ADD ./my.cnf /etc/mysql/my.cnf
 COPY docker-entrypoint.sh /usr/local/bin/
 COPY mysql-backup.sh /root/scripts/mysql-backup.sh
 RUN chmod 775 /usr/local/bin/docker-entrypoint.sh /root/scripts/mysql-backup.sh
