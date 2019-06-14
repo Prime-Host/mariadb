@@ -1,4 +1,4 @@
-FROM mariadb:latest
+FROM mariadb:10.2
 MAINTAINER Kevin Nordloh <info@prime-host.de>
 
 RUN apt-get update && apt-get install -y openssh-server vim supervisor curl wget git unzip zsh cron \
